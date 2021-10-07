@@ -6,24 +6,26 @@ using namespace std;
 void usage(const char* progname);
 void initValue(float* values1, float* values2, double* value3, float* output, unsigned int N);
 
-extern void test1(float* a, float* b, float* c, int N);
+extern void test1(float* a, float* b, float* c, int N, int count);
 extern void test2(float *__restrict a, float *__restrict b, float *__restrict c, int N);
 extern double test3(double* __restrict a, int N) ;
 
 int main(int argc, char * argv[]) {
   int N = 1024;
   int whichTestToRun = 1;
+  int count = 1;
 
   // parse commandline options ////////////////////////////////////////////
   int opt;
   static struct option long_options[] = {
     {"size", 1, 0, 's'},
     {"test", 1, 0, 't'},
+    {"count", 1, 0, 'c'},
     {"help", 0, 0, '?'},
     {0 ,0, 0, 0}
   };
 
-  while ((opt = getopt_long(argc, argv, "st:?", long_options, NULL)) != EOF) {
+  while ((opt = getopt_long(argc, argv, "st:c:?", long_options, NULL)) != EOF) {
 
     switch (opt) {
       case 's':
@@ -37,6 +39,13 @@ int main(int argc, char * argv[]) {
         whichTestToRun = atoi(optarg);
         if (whichTestToRun <= 0 || whichTestToRun >= 4) {
           cout << "Error: test" << whichTestToRun << "() is not available.\n";
+          return -1;
+        }
+        break;
+      case 'c':
+        count = atoi(optarg);
+        if (count <= 0) {
+          cout << "Error: Experiment count is set to" << count << " (<0).\n";
           return -1;
         }
         break;
@@ -55,7 +64,7 @@ int main(int argc, char * argv[]) {
 
   cout << "Running test" << whichTestToRun << "()...\n";
   switch (whichTestToRun) {
-    case 1: test1(values1, values2, output, N); break;
+    case 1: test1(values1, values2, output, N, count); break;
     case 2: test2(values1, values2, output, N); break;
     case 3: test3(values3, N); break;
   }

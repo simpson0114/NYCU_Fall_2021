@@ -13,7 +13,7 @@ void absVector(float *values, float *output, int N)
   //  Why is that the case?
   for (int i = 0; i < N; i += VECTOR_WIDTH)
   {
-    if(i + VECTOR_WIDTH >= N)
+    if(N % VECTOR_WIDTH != 0 && i + VECTOR_WIDTH >= N)
       maskAll = _pp_init_ones(N % VECTOR_WIDTH);
     else 
     {
@@ -66,7 +66,7 @@ void clampedExpVector(float *values, int *exponents, float *output, int N)
 
   for (int i = 0; i < N; i += VECTOR_WIDTH)
   {
-    if(i + VECTOR_WIDTH >= N)
+    if(N % VECTOR_WIDTH != 0 && i + VECTOR_WIDTH >= N)
       maskAll = _pp_init_ones(N % VECTOR_WIDTH);
     else 
     {
@@ -76,6 +76,10 @@ void clampedExpVector(float *values, int *exponents, float *output, int N)
 
     // All zeros
     maskIsNegative = _pp_init_ones(0);
+
+    maskCount = _pp_init_ones(0);
+
+    maskIsOverFlow = _pp_init_ones(0);
 
     // Load vector of values from contiguous memory addresses
     _pp_vload_float(x, values + i, maskAll); // x = values[i];
@@ -101,9 +105,9 @@ void clampedExpVector(float *values, int *exponents, float *output, int N)
     {
       _pp_vmult_float(result, result, x, maskCount);  // result *= x;
       
-      _pp_vsub_int(count, count, one_int, maskIsNotNegative); // count--
+      _pp_vsub_int(count, count, one_int, maskCount); // count--
     
-      _pp_vgt_int(maskCount, count, zero_int, maskAll); // count > 0
+      _pp_vgt_int(maskCount, count, zero_int, maskCount); // count > 0
     }
 
     _pp_vgt_float(maskIsOverFlow, result, max, maskAll); // if (result > 9.999999f)
@@ -120,7 +124,6 @@ void clampedExpVector(float *values, int *exponents, float *output, int N)
 // You can assume VECTOR_WIDTH is a power of 2
 float arraySumVector(float *values, int N)
 {
-
   //
   // PP STUDENTS TODO: Implement your vectorized version of arraySumSerial here
   //
@@ -136,12 +139,15 @@ float arraySumVector(float *values, int N)
     
     _pp_vadd_float(sum, sum, x, maskAll); //   sum += values[i];
   }
-  for(int i = 0; i < VECTOR_WIDTH / 2; i++)
+  for(int i = 0; i < log2(VECTOR_WIDTH); i++)
   {
     _pp_hadd_float(sum, sum);
 
     _pp_interleave_float(sum, sum);
   }
+
+  if(N % VECTOR_WIDTH != 0)
+    addUserLog("N is not a multiple of VECTOR_WIDTH");
 
   _pp_vstore_float(output, sum, maskAll);
 
