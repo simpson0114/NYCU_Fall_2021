@@ -1,5 +1,16 @@
 from pwn import *
 
+# 模仿題目 server.py 中的 step()
+def clock(count):
+    b = count[0]
+    for i in range(63):
+        count[i] = count[i+1]
+    count[63] = b
+    for i in range(len(polylist)):
+        count[polylist[i]] ^= b
+    return b
+
+# 先拿到前 64 個答案（要解出一開始的 64 個 bits 需要至少 64 個方程式）
 stream = []
 r = remote('edu-ctf.csie.org', '42069')
 money = 1.2
@@ -21,18 +32,9 @@ for _ in range(32):
 
 key_len = 64
 
-poly = [0] * 64
+poly = [0] * key_len
 
 polylist = [61, 59, 57, 51, 50, 48, 45, 44, 43, 41, 38, 37, 34, 33, 32, 30, 29, 28, 27, 26, 25, 20, 19, 17, 16, 15, 14, 13, 7, 5, 4, 3, 2, 1, 0]
-
-def clock(count):
-    b = count[0]
-    for i in range(63):
-        count[i] = count[i+1]
-    count[63] = b
-    for i in range(len(polylist)):
-        count[polylist[i]] ^= b
-    return b
 
 count = [0] * 64
 
@@ -108,11 +110,10 @@ for i in range(64):
 # poly63 = [0, 1, 2, 5, 6, 11, 12, 14, 16, 17, 18, 20, 21, 22, 25, 26, 27, 28, 29, 31, 34, 35, 37, 38, 39, 42, 43, 44, 45, 47, 49, 52, 53, 55, 56, 59, 60, 61]
 # poly64 = [1, 2, 3, 4, 6, 7, 12, 14, 18, 20, 24, 25, 26, 27, 29, 32, 33, 34, 36, 37, 38, 41, 42, 43, 44, 45, 48, 49, 54, 55, 57, 59, 60, 61, 63]
 
-
 key = [0] * key_len
 s = []
-# compare_key(key, poly, diff, diff_len, stream, 0)
 
+# 透過 64 個 poly 解出 64 個 key (一開始的 bits)
 tempt = [0] * 64
 tempt_stream = [0] * 64
 sign = 0
@@ -137,7 +138,7 @@ for i in range(63):
         else:
             tempt[j] = tempt[j]
             tempt_stream[j] = tempt_stream[j]
-print(bin(tempt[0]))
+print('63 ' + bin(tempt[0]))
 key[63] = tempt_stream[0]
 
 for a in range(63):
@@ -167,7 +168,7 @@ for a in range(63):
         if sign & 2**(63-i) != 0:
             sign ^= 2**(63-i)
             sign_stream ^= key[63-i]
-    print(bin(sign) + str(62 - a))
+    print(str(62 - a) + ' ' + bin(sign))
     key[62 - a] = sign_stream
 
 
