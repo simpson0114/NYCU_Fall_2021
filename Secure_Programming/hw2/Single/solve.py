@@ -1,11 +1,6 @@
 #!/bin/env python3
 # from secrets import a, b, FLAG
 from collections import namedtuple
-from Crypto.Util.number import inverse, bytes_to_long
-import hashlib
-import random
-
-# from single import point_multiply
 
 Point = namedtuple("Point", "x y")
 O = 'INFINITY'
@@ -18,38 +13,24 @@ gx = 566431488180136235398979010953044462303284216751002714049083295743074139336
 gy = 3735011281298930501441332016708219762942193860515094934964869027614672869355
 G = Point(gx, gy)
 
-# print(random.randint(1, p-2))
-
-# print(random.randint(1, p-2))
-
 dA = 0
 db = 0
 # k = point_multiply(B, dA).x = point_multiply(A, db).x
 
 p = 9631668579539701602760432524602953084395033948174466686285759025897298205383
-gy = 3735011281298930501441332016708219762942193860515094934964869027614672869355
 ay = 7947434117984861166834877190207950006170738405923358235762824894524937052000
 by = 9587224500151531060103223864145463144550060225196219072827570145340119297428
-gx = 5664314881801362353989790109530444623032842167510027140490832957430741393367
 ax = 3829488417236560785272607696709023677752676859512573328792921651640651429215
 bx = 2527809441042103520997737454058469252175392602635610992457770946515371529908
 
-# print((gy**2 % p - gx**3 % p) % p)
-# print((ay**2 % p - ax**3 % p) % p)
-g = (pow(gy, 2, p) - pow(gx, 3, p)) % p
-aa = (pow(ay, 2, p) - pow(ax, 3, p)) % p
-bb = (pow(by, 2, p) - pow(bx, 3, p)) % p
-a = ((g - aa) * pow(gx - ax, -1, p)) % p
+g_tmp = (pow(gy, 2, p) - pow(gx, 3, p)) % p
+a_tmp = (pow(ay, 2, p) - pow(ax, 3, p)) % p
+b_tmp = (pow(by, 2, p) - pow(bx, 3, p)) % p
+a = ((g_tmp - a_tmp) * pow(gx - ax, -1, p)) % p
 
 print(a)
 
-
 b = (pow(gy, 2, p) - (pow(gx, 3, p) + (gx * a % p))) % p
 print(b)
-# print((gy**2 % p - ay**2 % p - gx**3 % p + ax**3 % p) % p)
 
-# gy**2 % p == (gx**3 % p + a * gx % p + b % p) % p
-
-# ay**2 % p == (ax**3 % p + a * ax % p + b % p) % p
-
-# by**2 % p == (bx**3 % p + a * bx % p + b % p) % p
+print((4 * a**3 + 27 * b**2) % p)

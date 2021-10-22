@@ -5,7 +5,7 @@
 long long int number_in_circle, number_of_tosses;
 double x, y, distance_squared, pi_estimate;
 
-int main(int argc, char *argv) {
+int main(int argc, char *argv[]) {
     number_in_circle = 0;
     // number_of_tosses = 9223372036854775807;
     number_of_tosses = 10000000;
