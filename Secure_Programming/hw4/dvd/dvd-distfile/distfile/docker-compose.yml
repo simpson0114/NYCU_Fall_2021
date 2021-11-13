@@ -7,7 +7,7 @@ services:
     ports:
       - "10001:9453/tcp"
     environment:
-      - SECRET_KEY=<CENSORED>
+      - SECRET_KEY=d2908c1de1cd896d90f09df7df67e1d4
     depends_on:
       - database
 
