@@ -24,7 +24,6 @@ int main(int argc, char **argv)
     int tag = 0;
     int dest = 0;
     long long int total = 0;
-    MPI_Status status;
     srand(world_rank*time(NULL));
     long long int  local_toss = tosses / world_size;
     long long int  local_num = Cal_Pi(local_toss);
@@ -47,7 +46,7 @@ int main(int argc, char **argv)
             MPI_Irecv( &buffer[source-1], 1, MPI_LONG_LONG_INT, source, tag, MPI_COMM_WORLD, &requests[source-1]);
         }
 
-        MPI_Waitall(world_size-1, requests, &status);
+        MPI_Waitall(world_size-1, requests, MPI_STATUSES_IGNORE);
         for (int source = 0; source < world_size-1; source++)
             total = total + buffer[source];
     }
