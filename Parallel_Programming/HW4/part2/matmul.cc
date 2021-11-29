@@ -16,9 +16,8 @@ inline void read(int &x)
 
 
 void construct_matrices(int *n_ptr, int *m_ptr, int *l_ptr, int **a_mat_ptr, int **b_mat_ptr){
-	int world_rank, world_size, as, bs;
+	int world_rank, as, bs;
 	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-	MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
 	if(world_rank == 0) {
 		scanf("%d %d %d", n_ptr, m_ptr, l_ptr);
@@ -45,6 +44,7 @@ void construct_matrices(int *n_ptr, int *m_ptr, int *l_ptr, int **a_mat_ptr, int
 			}
 		}
 	}
+	
 
 	MPI_Bcast(*a_mat_ptr, as, MPI_INT, 0, MPI_COMM_WORLD);
 	MPI_Bcast(*b_mat_ptr, bs, MPI_INT, 0, MPI_COMM_WORLD);
@@ -59,10 +59,10 @@ void matrix_multiply(const int n, const int m, const int l, const int *a_mat, co
 	int len, start, end;
 	len = n * l;
 	start = (n / world_size) * world_rank;
-	end = start + (n / world_size);
-	if (world_rank == world_size - 1){
+	if (world_rank == world_size - 1)
 		end = n;
-	}
+	else
+		end = start + (n / world_size);
 
 	C = (int*)calloc(len, sizeof(int));
 	ans = (int*)calloc(len, sizeof(int));
@@ -72,7 +72,7 @@ void matrix_multiply(const int n, const int m, const int l, const int *a_mat, co
 	a_idx = start * m;
 	
 	for(i = start ; i < end ; i++, a_idx += m){
-		c_idx= i * l;
+		c_idx = i * l;
 		//a_idx = i*m;
 		//tc = c_idx;
 		b_idx = 0;
@@ -96,8 +96,7 @@ void matrix_multiply(const int n, const int m, const int l, const int *a_mat, co
 		for(i = 0 ; i < n ; i++){
 			c_idx = i * l;
 			for(j = 0 ; j < l ; j++){
-				if(j) putchar(' ');
-				printf("%d", ans[c_idx]);
+				printf("%d ", ans[c_idx]);
 				c_idx++;
 			}
 			//printf("\n");
@@ -107,9 +106,8 @@ void matrix_multiply(const int n, const int m, const int l, const int *a_mat, co
 }
 
 void destruct_matrices(int *a_mat, int *b_mat){
-	int world_rank, world_size;
+	int world_rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-	MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 	if(world_rank == 0){
 		free(a_mat);
 		free(b_mat);
