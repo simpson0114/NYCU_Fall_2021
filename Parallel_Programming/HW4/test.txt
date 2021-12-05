@@ -1,0 +1,2 @@
+mpirun -np 4 --hostfile /home/.grade/HW4/mat1_hosts ./matmul < /home/.grade/HW4/data-set/data1_1
+mpirun -np 5 --hostfile /home/.grade/HW4/mat2_hosts ./matmul < /home/.grade/HW4/data-set/data2_1

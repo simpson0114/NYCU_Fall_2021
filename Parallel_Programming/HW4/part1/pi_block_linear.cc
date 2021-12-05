@@ -10,53 +10,65 @@ long int Cal_Pi(long int local_toss);
 int main(int argc, char **argv)
 {
     // --- DON'T TOUCH ---
+    double total_time = 0;
     MPI_Init(&argc, &argv);
-    double start_time = MPI_Wtime();
-    double pi_result;
-    long int tosses = atoi(argv[1]);
-    int world_rank, world_size;
-    // ---
-    
-    // TODO: init MPI
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+    for(int i = 0; i < 10; i++) {
+        double start_time = MPI_Wtime();
+        double pi_result;
+        long int tosses = atoi(argv[1]);
+        int world_rank, world_size;
+        // ---
+        
+        // TODO: init MPI
+        MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+        MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
 
-    int tag = 0;
-    int dest = 0;
-    long int total = 0;
-    MPI_Status status;
-    srand(world_rank*time(NULL));
-    long int  local_toss = tosses / world_size;
-    long int  local_num = Cal_Pi(local_toss);
+        int tag = 0;
+        int dest = 0;
+        long int total = 0;
+        MPI_Status status;
+        srand(world_rank*time(NULL));
+        long int  local_toss = tosses / world_size;
+        long int  local_num = Cal_Pi(local_toss);
 
-    if (world_rank > 0)
-    {
-        // TODO: handle workers
-        MPI_Send(&local_num, 1, MPI_LONG, dest, tag, MPI_COMM_WORLD);
-    }
-    else if (world_rank == 0)
-    {
-        // TODO: master
-        total = local_num;
-        for (int source = 1; source < world_size; source++)
+        if (world_rank > 0)
         {
-            MPI_Recv( &local_num, 1, MPI_LONG, source, tag, MPI_COMM_WORLD, &status);
-            total = total + local_num;
+            // TODO: handle workers
+            MPI_Send(&local_num, 1, MPI_LONG, dest, tag, MPI_COMM_WORLD);
+        }
+        else if (world_rank == 0)
+        {
+            // TODO: master
+            total = local_num;
+            for (int source = 1; source < world_size; source++)
+            {
+                MPI_Recv( &local_num, 1, MPI_LONG, source, tag, MPI_COMM_WORLD, &status);
+                total = total + local_num;
+            }
+        }
+
+        if (world_rank == 0)
+        {
+            // TODO: process PI result
+            pi_result = 4 * total /(( double ) tosses);
+
+            // --- DON'T TOUCH ---
+            double end_time = MPI_Wtime();
+            // printf("%lf\n", pi_result);
+            // printf("MPI running time: %lf Seconds\n", end_time - start_time);
+            double time = end_time - start_time;
+            if(total_time != 0 && abs(time - total_time/i) > 1) {
+                printf("Run it again!\n");
+                total_time += end_time - start_time;
+            }
+            else
+                total_time += end_time - start_time;
+            printf("block linear MPI running time: %lf Seconds\n", time);
+            if(i == 9)
+                printf("avg gather MPI running time: %lf Seconds\n", total_time / 10);
+            // ---
         }
     }
-
-    if (world_rank == 0)
-    {
-        // TODO: process PI result
-        pi_result = 4 * total /(( double ) tosses);
-
-        // --- DON'T TOUCH ---
-        double end_time = MPI_Wtime();
-        printf("%lf\n", pi_result);
-        printf("MPI running time: %lf Seconds\n", end_time - start_time);
-        // ---
-    }
-
     MPI_Finalize();
     return 0;
 }
