@@ -12,13 +12,13 @@
 __device__ int mandel(float c_re, float c_im, int maxIteration)
 {
 	float z_re = c_re, z_im = c_im;
-    float new_re, new_im;
+	float new_re, new_im;
+
 
 	int i = 0;
-	while(i < maxIteration)
-	{
-		if (z_re * z_re + z_im * z_im > 4.f)
-		    break;
+	while(i < maxIteration) {
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
 
 		new_re = z_re * z_re - z_im * z_im;
 		new_im = 2.f * z_re * z_im;
@@ -27,8 +27,8 @@ __device__ int mandel(float c_re, float c_im, int maxIteration)
 
 		++i;
 
-		if (z_re * z_re + z_im * z_im > 4.f)
-		    break;
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
 
 		new_re = z_re * z_re - z_im * z_im;
 		new_im = 2.f * z_re * z_im;
@@ -37,8 +37,8 @@ __device__ int mandel(float c_re, float c_im, int maxIteration)
 
 		++i;
 
-		if (z_re * z_re + z_im * z_im > 4.f)
-		    break;
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
 
 		new_re = z_re * z_re - z_im * z_im;
 		new_im = 2.f * z_re * z_im;
@@ -47,8 +47,8 @@ __device__ int mandel(float c_re, float c_im, int maxIteration)
 
 		++i;
 
-		if (z_re * z_re + z_im * z_im > 4.f)
-		    break;
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
 
 		new_re = z_re * z_re - z_im * z_im;
 		new_im = 2.f * z_re * z_im;
@@ -57,8 +57,8 @@ __device__ int mandel(float c_re, float c_im, int maxIteration)
 
 		++i;
 
-		if (z_re * z_re + z_im * z_im > 4.f)
-		    break;
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
 
 		new_re = z_re * z_re - z_im * z_im;
 		new_im = 2.f * z_re * z_im;
@@ -67,8 +67,8 @@ __device__ int mandel(float c_re, float c_im, int maxIteration)
 
 		++i;
 
-		if (z_re * z_re + z_im * z_im > 4.f)
-		    break;
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
 
 		new_re = z_re * z_re - z_im * z_im;
 		new_im = 2.f * z_re * z_im;
@@ -77,8 +77,8 @@ __device__ int mandel(float c_re, float c_im, int maxIteration)
 
 		++i;
 
-		if (z_re * z_re + z_im * z_im > 4.f)
-		    break;
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
 
 		new_re = z_re * z_re - z_im * z_im;
 		new_im = 2.f * z_re * z_im;
@@ -87,8 +87,928 @@ __device__ int mandel(float c_re, float c_im, int maxIteration)
 
 		++i;
 
-		if (z_re * z_re + z_im * z_im > 4.f)
-		    break;
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f)
+			break;
+
+		new_re = z_re * z_re - z_im * z_im;
+		new_im = 2.f * z_re * z_im;
+		z_re = c_re + new_re;
+		z_im = c_im + new_im;
+
+		++i;
+
+		if (z_re * z_re +  z_im * z_im > 4.f) 
+			break;
 
 		new_re = z_re * z_re - z_im * z_im;
 		new_im = 2.f * z_re * z_im;
@@ -97,7 +1017,6 @@ __device__ int mandel(float c_re, float c_im, int maxIteration)
 
 		++i;
 	}
-
 	return i;
 }
 
