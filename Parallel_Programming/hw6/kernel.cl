@@ -1,24 +1,37 @@
 __kernel void convolution(
-    __global const float *filter, __global const float *inputImage, __global float *outputImage,
-    int filterWidth, int imageHeight, int imageWidth) 
+    __constant float *filter, __global const float *inputImage, __global float4 *outputImage,
+    const int halffilterSize, const int imageHeight, const int imageWidth) 
 {
-    const int ix = get_global_id(0);
-    const int iy = get_global_id(1);
-    const int halffilterSize = filterWidth / 2;
+    const int gid = get_global_id(0) << 2;
+    int now_x = gid % imageWidth;
+	int now_y = gid / imageWidth;
+    int yy, xx, k, l, wy, pos;
+	float4 cal, f;
 
-    int k;
+    int fIndex = 0;
+    float4 sum = (float4)0.0;
     for (k = -halffilterSize; k <= halffilterSize; k++)
     {
-        for (l = -halffilterSize; l <= halffilterSize; l++)
+        yy = now_y + k;
+        if(yy >= 0 && yy < imageHeight)
         {
-            if (ix + k >= 0 && ix + k < imageHeight &&
-                iy + l >= 0 && iy + l < imageWidth)
+            for (l = -halffilterSize; l <= halffilterSize; l++)
             {
-                sum += inputImage[(ix + k) * imageWidth + j + l] *
-                        filter[(k + halffilterSize) * filterWidth +
-                                l + halffilterSize];
+                if(filter[fIndex] == 0) ;
+                else {
+                    xx = now_x + l;
+                    if (xx >= 0 && xx < imageWidth)
+                    {
+						pos = xx + yy * imageWidth;
+						cal = (float4)(inputImage[pos], inputImage[pos+1], inputImage[pos+2], inputImage[pos+3]);
+
+						f = filter[fIndex];
+						sum += cal * f;
+                    }
+                }
+                fIndex++;
             }
         }
     }
-    outputImage[ix * imageWidth + iy] = sum;
+    outputImage[gid>>2] = sum;
 }
