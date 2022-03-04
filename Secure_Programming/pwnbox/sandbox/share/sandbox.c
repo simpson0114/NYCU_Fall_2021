@@ -58,7 +58,7 @@ struct _Register {
     } while (0)
 
 const char epilogue[] = "H\xc7\xc0<\x00\x00\x00\x0f\x05"; // sys_exit
-const char syscall_pattern[] = "\x0f\x05";
+const char syscall_pattern[] = "\x0f\x05";  //  syscall
 const char mov_r8_prefix[] = "I\xb8";
 const char call_r8[] = "A\xff\xd0";
 
